@@ -6,14 +6,13 @@
 // SPDX-License-Identifier: MIT
 //
 
-#if DEBUG || TEST
 import Foundation
 
 
-func neverReturn() -> Never {
+@inlinable
+package func neverReturn() -> Never {
     // This is unfortunate but as far as I can see the only feasible way to return Never without calling a runtime crashing function, e.g. `fatalError()`.
     repeat {
         RunLoop.current.run()
     } while (true)
 }
-#endif

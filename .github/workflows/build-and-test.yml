@@ -21,50 +21,50 @@ jobs:
     uses: StanfordBDHG/.github/.github/workflows/xcodebuild-or-fastlane.yml@v2
     with:
       runsonlabels: '["macOS", "self-hosted"]'
-      scheme: XCTRuntimeAssertions
-      resultBundle: XCTRuntimeAssertions-iOS.xcresult
-      artifactname: XCTRuntimeAssertions-iOS.xcresult
+      scheme: RuntimeAssertions-Package
+      resultBundle: RuntimeAssertions-iOS.xcresult
+      artifactname: RuntimeAssertions-iOS.xcresult
   buildandtest_watchos:
     name: Build and Test Swift Package watchOS
     uses: StanfordBDHG/.github/.github/workflows/xcodebuild-or-fastlane.yml@v2
     with:
       runsonlabels: '["macOS", "self-hosted"]'
-      scheme: XCTRuntimeAssertions
-      destination: 'platform=watchOS Simulator,name=Apple Watch Series 9 (45mm)'
-      resultBundle: XCTRuntimeAssertions-watchOS.xcresult
-      artifactname: XCTRuntimeAssertions-watchOS.xcresult
+      scheme: RuntimeAssertions-Package
+      destination: 'platform=watchOS Simulator,name=Apple Watch Series 10 (46mm)'
+      resultBundle: RuntimeAssertions-watchOS.xcresult
+      artifactname: RuntimeAssertions-watchOS.xcresult
   buildandtest_visionos:
     name: Build and Test Swift Package visionOS
     uses: StanfordBDHG/.github/.github/workflows/xcodebuild-or-fastlane.yml@v2
     with:
       runsonlabels: '["macOS", "self-hosted"]'
-      scheme: XCTRuntimeAssertions
+      scheme: RuntimeAssertions-Package
       destination: 'platform=visionOS Simulator,name=Apple Vision Pro'
-      resultBundle: XCTRuntimeAssertions-visionOS.xcresult
-      artifactname: XCTRuntimeAssertions-visionOS.xcresult
+      resultBundle: RuntimeAssertions-visionOS.xcresult
+      artifactname: RuntimeAssertions-visionOS.xcresult
   buildandtest_tvos:
     name: Build and Test Swift Package tvOS
     uses: StanfordBDHG/.github/.github/workflows/xcodebuild-or-fastlane.yml@v2
     with:
       runsonlabels: '["macOS", "self-hosted"]'
-      scheme: XCTRuntimeAssertions
+      scheme: RuntimeAssertions-Package
       destination: 'platform=tvOS Simulator,name=Apple TV 4K (3rd generation)'
-      resultBundle: XCTRuntimeAssertions-tvOS.xcresult
-      artifactname: XCTRuntimeAssertions-tvOS.xcresult
+      resultBundle: RuntimeAssertions-tvOS.xcresult
+      artifactname: RuntimeAssertions-tvOS.xcresult
   buildandtest_macos:
     name: Build and Test Swift Package macOS
     uses: StanfordBDHG/.github/.github/workflows/xcodebuild-or-fastlane.yml@v2
     with:
       runsonlabels: '["macOS", "self-hosted"]'
-      scheme: XCTRuntimeAssertions
+      scheme: RuntimeAssertions-Package
       destination: 'platform=macOS,arch=arm64'
-      resultBundle: XCTRuntimeAssertions-macOS.xcresult
-      artifactname: XCTRuntimeAssertions-macOS.xcresult
+      resultBundle: RuntimeAssertions-macOS.xcresult
+      artifactname: RuntimeAssertions-macOS.xcresult
   uploadcoveragereport:
     name: Upload Coverage Report
     needs: [buildandtest_ios, buildandtest_visionos, buildandtest_watchos, buildandtest_tvos, buildandtest_macos]
     uses: StanfordBDHG/.github/.github/workflows/create-and-upload-coverage-report.yml@v2
     with:
-      coveragereports: XCTRuntimeAssertions-iOS.xcresult XCTRuntimeAssertions-watchOS.xcresult XCTRuntimeAssertions-visionOS.xcresult XCTRuntimeAssertions-tvOS.xcresult XCTRuntimeAssertions-macOS.xcresult
+      coveragereports: RuntimeAssertions-iOS.xcresult RuntimeAssertions-watchOS.xcresult RuntimeAssertions-visionOS.xcresult RuntimeAssertions-tvOS.xcresult RuntimeAssertions-macOS.xcresult
     secrets:
       token: ${{ secrets.CODECOV_TOKEN }}
